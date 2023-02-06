@@ -12,27 +12,29 @@ public class Main {
         control.start();
 
 
-        // contar 5s
-        long startTime = System.nanoTime();
-        TimeUnit.SECONDS.sleep(2);
-        long endTime = System.nanoTime();
-        long timeElapse = endTime-startTime;
+        while (true) {
 
-        //
-        control.esperar();
 
-        //
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Presiona enter para continuar");
-        String input = scanner.nextLine();
+            // contar 5s
+            long startTime = System.nanoTime();
+            TimeUnit.SECONDS.sleep(2);
+            long endTime = System.nanoTime();
+            long timeElapse = endTime - startTime;
 
-        if(Objects.equals(input, "")){
-            control.reanudar();
+            //
+            control.esperar();
+
+            //
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Presiona enter para continuar");
+            String input = scanner.nextLine();
+
+            if (Objects.equals(input, "")) {
+                control.reanudar();
+            }
+
+
         }
-
-
-
-
     }
 	
 }

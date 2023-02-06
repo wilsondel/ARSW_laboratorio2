@@ -58,6 +58,7 @@ public class PrimeFinderThread extends Thread{
     public synchronized void enSuspension(){
         while(estado){
             try{
+                System.out.println("Cantidad de primos encontrados: " + getPrimes().size() + "en el thread " + currentThread().getName());
                 wait();
 
             } catch (InterruptedException e) {
