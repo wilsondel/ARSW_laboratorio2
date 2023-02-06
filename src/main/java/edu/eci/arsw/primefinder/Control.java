@@ -40,5 +40,17 @@ public class Control extends Thread {
             pft[i].start();
         }
     }
+
+    public void esperar(){
+        for(PrimeFinderThread  thread: pft){
+            thread.suspender();
+        }
+    }
+    public void reanudar(){
+        for(PrimeFinderThread  thread: pft){
+            thread.reanudar();
+        }
+    }
+
     
 }

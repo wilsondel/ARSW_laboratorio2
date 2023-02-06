@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class PrimeFinderThread extends Thread{
+    public boolean estado = false;
 
 	
 	int a,b;
@@ -23,6 +24,7 @@ public class PrimeFinderThread extends Thread{
                 if (isPrime(i)){
                     primes.add(i);
                     System.out.println(i);
+                    enSuspension();
                 }
             }
 	}
@@ -43,5 +45,26 @@ public class PrimeFinderThread extends Thread{
 	public List<Integer> getPrimes() {
 		return primes;
 	}
+
+    public synchronized void suspender(){
+        estado = true;
+    }
+
+    public synchronized void reanudar(){
+        estado = false;
+        notifyAll();
+    }
+
+    public synchronized void enSuspension(){
+        while(estado){
+            try{
+                wait();
+
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+    }
 	
 }
